@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 import { ComponentContentSchema, PageSchema, UserSchema, TokenSchema } from './schemas/schema.mjs'
 
 try {
-  await mongoose.connect('mongodb://127.0.0.1:27017/db')
+  await mongoose.connect(process.env.MONGO_URL)
 } catch (error) {
   console.log(error)
 }
