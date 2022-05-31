@@ -4,7 +4,7 @@
   "description": "graphql server for wither app",
   "scripts": {
     "mongo": "mongod --dbpath ../db",
-    "gql": "node server.mjs"
+    "start": "node server.mjs"
   },
   "dependencies": {
     "cors": "^2.8.5",
