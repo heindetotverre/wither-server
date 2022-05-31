@@ -2,6 +2,8 @@ import {} from 'dotenv/config'
 import mongoose from 'mongoose'
 import { ComponentContentSchema, PageSchema, UserSchema, TokenSchema } from './schemas/schema.mjs'
 
+console.log('test')
+
 try {
   await mongoose.connect(process.env.MONGO_URL)
 } catch (error) {
