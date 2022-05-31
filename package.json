@@ -1,0 +1,16 @@
+{
+  "name": "wither-graphql-server",
+  "version": "1.0.0",
+  "description": "graphql server for wither app",
+  "scripts": {
+    "mongo": "mongod --dbpath ../db",
+    "gql": "node server.mjs"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "express-graphql": "^0.12.0",
+    "graphql": "^14.7.0",
+    "mongodb": "^4.3.0"
+  }
+}
