@@ -1,3 +1,4 @@
+import {} from 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import { graphqlHTTP } from 'express-graphql'
@@ -5,6 +6,7 @@ import resolvers from './resolvers/index.mjs'
 import typedefs from './schemas/index.mjs'
 
 const app = express()
+const port = process.env.DOKKU_PROXY_PORT || 4000
 
 app.use(cors())
 
@@ -14,5 +16,5 @@ app.use('/gql', graphqlHTTP({
   graphiql: true,
 }))
 
-app.listen(4000)
-console.log('Running a GraphQL API server at http://localhost:4000/gql')
+app.listen(port)
+console.log(`Running a GraphQL API server at http://localhost:${port}/gql`)
