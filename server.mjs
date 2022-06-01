@@ -7,16 +7,16 @@ import typedefs from './schemas/index.mjs'
 
 const app = express()
 const port = process.env.DOKKU_PROXY_PORT || 4000
-const url = process.env.MONGO_URL_SUFFIX || 'gql'
-const host = process.env.HOSTNAME || 'localhost'
+const url = 'graphql'
+const host = process.env.DOKKU_PROXY_PORT_MAP || `localhost:${port}`
 
 app.use(cors())
 
-app.use('/gql', graphqlHTTP({
+app.use(`/${url}`, graphqlHTTP({
   schema: typedefs,
   rootValue: resolvers,
   graphiql: true,
 }))
 
 app.listen(port)
-console.log(`Running a GraphQL API server at http://${host}:${port}/${url}`)
+console.log(`Running a GraphQL API server at http://${host}/${url}`)
