@@ -19,4 +19,4 @@ app.use(`/${url}`, graphqlHTTP({
 }))
 
 app.listen(port)
-console.log(`Running a GraphQL API server at http://${host}/${url}`)
+console.log(`Running a GraphQL API server at ${host}/${url}`)
