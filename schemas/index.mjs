@@ -28,7 +28,7 @@ export default buildSchema(`
     id: ID
     user: String
     group: Int
-    created: Int
+    created: Float
   }
 
   type FieldValidator {
@@ -126,7 +126,7 @@ export default buildSchema(`
   input TokenInput {
     user: String
     password: String
-    id: String
+    id: ID
   }
 
   type Query {
@@ -146,7 +146,7 @@ export default buildSchema(`
     deleteComponentContent(name: String): ComponentContent
     deleteUser(id: String): User
     deletePage(id: String): Page
-    deleteToken(id: String): Token
+    deleteToken(id: ID): Token
     editUser(input: UserInput): User
   }
 `)
