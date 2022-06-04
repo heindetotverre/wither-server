@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "graphql server for wither app",
   "scripts": {
-    "mongo": "mongod --dbpath ../db",
     "start": "node server.mjs"
   },
   "dependencies": {
