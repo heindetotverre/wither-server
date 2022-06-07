@@ -2,3 +2,4 @@ node_modules
 *.log
 .output
 .DS_Store
+db
