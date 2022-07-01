@@ -65,6 +65,14 @@ export default buildSchema(`
     fields: [ComponentFields]
   }
 
+  type FileMeta {
+    id: String,
+    fileName: String,
+    fileType: String,
+    title: String,
+    uploadDate: Float
+  }
+
   input FieldValidatorInput {
     validator: String
     validated: Boolean
@@ -129,6 +137,14 @@ export default buildSchema(`
     id: ID
   }
 
+  input FileMetaInput {
+    id: String,
+    fileName: String,
+    fileType: String,
+    title: String,
+    uploadDate: Float
+  }
+
   type Query {
     getComponentContent: [ComponentContent]
     getComponentContentBySlug(slug: String): [ComponentContent]
@@ -136,6 +152,8 @@ export default buildSchema(`
     getSinglePage(slug: String): Page
     getSingleUser(tokenId: String): User
     getToken(id: ID): Token
+    getAllFileMeta: [FileMeta]
+    getSingleFileMeta(id: ID): FileMeta
   }
 
   type Mutation {
@@ -143,10 +161,12 @@ export default buildSchema(`
     createPage(input: PageInput): Page
     createUser(input: UserInput): User
     createToken(input: TokenInput): Token
+    createFileMeta(input: FileMetaInput): FileMeta
     deleteComponentContent(name: String): ComponentContent
     deleteUser(id: String): User
     deletePage(id: String): Page
     deleteToken(id: ID): Token
+    deleteFileMeta(id: ID): FileMeta
     editUser(input: UserInput): User
   }
 `)

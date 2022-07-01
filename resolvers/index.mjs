@@ -1,4 +1,4 @@
-import { ComponentContent, Pages, Users, Tokens } from '../mongooseConnect.mjs'
+import { ComponentContent, Pages, Users, Tokens, FileMeta } from '../mongooseConnect.mjs'
 
 export default {
   getComponentContent: async () => {
@@ -64,6 +64,28 @@ export default {
         throw new Error(`Token not found with ${id}`)
       }
       return token
+    } catch (error) {
+      throw error
+    }
+  },
+  getAllFileMeta: async () => {
+    try {
+      const fileMetaArray = await FileMeta.find({})
+      if (!fileMetaArray) {
+        throw new Error(`No filemeta present`)
+      }
+      return fileMetaArray
+    } catch (error) {
+      throw error
+    }
+  },
+  getSingleFileMeta: async ({ id }) => {
+    try {
+      const fileMeta = await FileMeta.findOne({ id: id })
+      if (!fileMeta) {
+        throw new Error(`FileMeta not found with ${id}`)
+      }
+      return fileMeta
     } catch (error) {
       throw error
     }
@@ -151,6 +173,25 @@ export default {
       throw error
     }
   },
+  createFileMeta: async ({ input }) => {
+    try {
+      const newFileMeta = new FileMeta({
+        ...input
+      })
+      const existingFileMeta = await FileMeta.findOne({ id: input.id })
+      if (existingFileMeta) {
+        delete input.id
+        await FileMeta.findOneAndUpdate({ id: input.id }, input)
+        const updatedFileMeta = await FileMeta.findOne({ id: input.id })
+        return updatedFileMeta
+      } else {
+        await newFileMeta.save()
+      }
+      return newFileMeta
+    } catch (error) {
+      throw error
+    }
+  },
   editUser: async ({ input }) => {
     try {
       const user = await Users.findOne({ id: input.id })
@@ -194,6 +235,17 @@ export default {
         throw new Error(`Token with ${id} not found`)
       }
       return deletedToken
+    } catch (error) {
+      throw error
+    }
+  },
+  deleteFileMeta: async ({ id }) => {
+    try {
+      const deletedFileMeta = await FileMeta.findOneAndDelete({ id: id })
+      if (!deletedFileMeta) {
+        throw new Error(`FileNeta with ${id} not found`)
+      }
+      return deletedFileMeta
     } catch (error) {
       throw error
     }

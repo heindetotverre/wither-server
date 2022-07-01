@@ -1,6 +1,6 @@
 import {} from 'dotenv/config'
 import mongoose from 'mongoose'
-import { ComponentContentSchema, PageSchema, UserSchema, TokenSchema } from './schemas/schema.mjs'
+import { ComponentContentSchema, PageSchema, UserSchema, TokenSchema, FileMetaSchema } from './schemas/schema.mjs'
 
 
 try {
@@ -13,10 +13,12 @@ const ComponentContent = mongoose.model('ComponentContent', ComponentContentSche
 const Pages = mongoose.model('Pages', PageSchema)
 const Users = mongoose.model('Users', UserSchema)
 const Tokens = mongoose.model('Tokens', TokenSchema)
+const FileMeta = mongoose.model('FileMeta', FileMetaSchema)
 
 export {
   ComponentContent,
   Pages,
   Users,
-  Tokens
+  Tokens,
+  FileMeta
 }
