@@ -39,10 +39,10 @@ export default buildSchema(`
 
   type ComponentFields {
     autocomplete: String
-    class: String
     component: String
     disabled: Boolean
     domclass: String
+    elementName: String
     formPart: String
     id: String
     key: String
@@ -81,10 +81,10 @@ export default buildSchema(`
 
   input ComponentFieldsInput {
     autocomplete: String
-    class: String
     component: String
     disabled: Boolean
     domclass: String
+    elementName: String
     formPart: String
     id: String
     key: String

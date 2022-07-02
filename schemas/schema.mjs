@@ -94,10 +94,6 @@ const ComponentFieldsSchema = new schema({
   autocomplete: {
     type: String
   },
-  class: {
-    type: String,
-    required: true
-  },
   component: {
     type: String,
     required: true
@@ -107,6 +103,10 @@ const ComponentFieldsSchema = new schema({
   },
   domclass: {
     type: String
+  },
+  elementName: {
+    type: String,
+    required: true
   },
   formPart: {
     type: String
