@@ -167,20 +167,12 @@ const ComponentContentSchema = new schema({
   fields: [ComponentFieldsSchema]
 })
 
-const FileMetaSchema = new schema({
-  id: {
-    type: String,
-    required: true
-  },
+const ImageDataSchema = new schema({
   fileName: {
     type: String,
     required: true
   },
-  fileType: {
-    type: String,
-    required: true
-  },
-  title: {
+  id: {
     type: String,
     required: true
   },
@@ -192,7 +184,7 @@ const FileMetaSchema = new schema({
 
 export {
   ComponentContentSchema,
-  FileMetaSchema,
+  ImageDataSchema,
   PageSchema,
   UserSchema,
   TokenSchema

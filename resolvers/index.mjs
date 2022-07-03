@@ -1,4 +1,4 @@
-import { ComponentContent, Pages, Users, Tokens, FileMeta } from '../mongooseConnect.mjs'
+import { ComponentContent, Pages, Users, Tokens, ImageData } from '../mongooseConnect.mjs'
 
 export default {
   getComponentContent: async () => {
@@ -68,24 +68,24 @@ export default {
       throw error
     }
   },
-  getAllFileMeta: async () => {
+  getAllImageMeta: async () => {
     try {
-      const fileMetaArray = await FileMeta.find({})
-      if (!fileMetaArray) {
-        throw new Error(`No filemeta present`)
+      const imageMetaArray = await ImageData.find({})
+      if (!imageMetaArray) {
+        throw new Error(`No imagemeta present`)
       }
-      return fileMetaArray
+      return imageMetaArray
     } catch (error) {
       throw error
     }
   },
-  getSingleFileMeta: async ({ id }) => {
+  getSingleImageMeta: async ({ id }) => {
     try {
-      const fileMeta = await FileMeta.findOne({ id: id })
-      if (!fileMeta) {
+      const imageMeta = await ImageData.findOne({ id: id })
+      if (!imageMeta) {
         throw new Error(`FileMeta not found with ${id}`)
       }
-      return fileMeta
+      return imageMeta
     } catch (error) {
       throw error
     }
