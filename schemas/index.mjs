@@ -56,12 +56,13 @@ export default buildSchema(`
   }
 
   type ComponentFieldInfo {
+    id: ID
     name: String
     slug: String
   }
 
   type ComponentContent {
-    formInfo: ComponentFieldInfo
+    pageInfo: ComponentFieldInfo
     fields: [ComponentFields]
   }
 
@@ -96,12 +97,13 @@ export default buildSchema(`
   }
 
   input ComponentFieldInfoInput {
+    id: ID
     name: String
     slug: String
   }
 
   input ComponentContentInput {
-    formInfo: ComponentFieldInfoInput
+    pageInfo: ComponentFieldInfoInput
     fields: [ComponentFieldsInput]
   }
 

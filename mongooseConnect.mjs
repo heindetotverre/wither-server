@@ -1,4 +1,3 @@
-import {} from 'dotenv/config'
 import mongoose from 'mongoose'
 import { ComponentContentSchema, PageSchema, UserSchema, TokenSchema, ImageDataSchema } from './schemas/schema.mjs'
 

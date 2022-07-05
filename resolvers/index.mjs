@@ -14,7 +14,7 @@ export default {
   },
   getComponentContentBySlug: async ({ slug }) => {
     try {
-      const componentContentArray = await ComponentContent.find({ 'formInfo.slug': slug })
+      const componentContentArray = await ComponentContent.find({ 'pageInfo.slug': slug })
       if (!componentContentArray) {
         throw new Error(`No componentContent for page ${slug}`)
       }
@@ -95,11 +95,11 @@ export default {
       const newComponentContent = new ComponentContent({
         ...input
       })
-      const exisitingContent = await ComponentContent.findOne({ 'formInfo.name': input.formInfo.name })
+      const exisitingContent = await ComponentContent.findOne({ 'pageInfo.name': input.pageInfo.name })
       if (exisitingContent) {
         delete input.id
-        await ComponentContent.findOneAndUpdate({ 'formInfo.name': input.formInfo.name }, input)
-        const updatedContent = await ComponentContent.findOne({ 'formInfo.name': input.formInfo.name })
+        await ComponentContent.findOneAndUpdate({ 'pageInfo.name': input.pageInfo.name }, input)
+        const updatedContent = await ComponentContent.findOne({ 'pageInfo.name': input.pageInfo.name })
         return updatedContent
       } else {
         await newComponentContent.save()
@@ -167,6 +167,7 @@ export default {
       ...input
     })
     try {
+      await Tokens.deleteMany({ user: input.user })
       await newToken.save()
       return newToken
     } catch (error) {

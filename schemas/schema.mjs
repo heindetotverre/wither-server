@@ -154,7 +154,11 @@ const ComponentFieldsSchema = new schema({
 })
 
 const ComponentContentSchema = new schema({
-  formInfo: {
+  pageInfo: {
+    id: {
+      type: String,
+      required: true
+    },
     name: {
       type: String,
       required: true
